@@ -1,6 +1,6 @@
 export type UserStateType = {
   email: string;
-}
+};
 
 export type ExpensesObjectType = {
   id: number;
@@ -10,21 +10,26 @@ export type ExpensesObjectType = {
   tag: string;
   description: string;
   exchangeRates: string;
-}
+};
 
 export type WalletStateType = {
   currencies: string[],
   expenses: ExpensesObjectType[];
   editor: boolean;
   idToEdit: number;
-}
+};
 
 export type UserActionType = {
   type: string,
   payload: UserStateType,
-}
+};
 
 export type WalletActionType = {
   type: string;
   payload: WalletStateType;
-}
+};
+
+export type GlobalStoreType = {
+  user: UserStateType;
+  wallet: WalletStateType;
+};
