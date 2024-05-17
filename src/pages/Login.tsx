@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { submitLoginActionCreator } from '../redux/actions';
+import { submitLoginAction } from '../redux/actions';
 
 function Login() {
   const dispatch = useDispatch();
@@ -26,7 +26,7 @@ function Login() {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    dispatch(submitLoginActionCreator(formData.emailInput));
+    dispatch(submitLoginAction(formData.emailInput));
     navigate('/carteira');
   };
 
