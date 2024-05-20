@@ -1,7 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { DispatchType, GlobalStoreType } from '../types';
-import { requestAllCurrenciesList, requestAllCurrencyCodes } from '../redux/actions';
+import { DispatchType, ExpensesObjectType, GlobalStoreType } from '../types';
+import {
+  editExpenseAction,
+  requestAllCurrenciesList,
+  requestAllCurrencyCodes,
+} from '../redux/actions';
 
 function WalletForm() {
   const { isLoading } = useSelector((globalState: GlobalStoreType) => globalState.wallet);
@@ -9,6 +13,9 @@ function WalletForm() {
     (globalState: GlobalStoreType) => globalState.wallet,
   );
   const { expenses } = useSelector(
+    (globalState: GlobalStoreType) => globalState.wallet,
+  );
+  const { editor, idToEdit } = useSelector(
     (globalState: GlobalStoreType) => globalState.wallet,
   );
   const dispatch: DispatchType = useDispatch();
@@ -34,8 +41,16 @@ function WalletForm() {
     setFormData(updatedFormData);
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const handleEditExpense = () => {
+    const updatedFormData = {
+      ...formData,
+      id: idToEdit,
+      exchangeRates: expenses.find(({ id }) => id === idToEdit)?.exchangeRates,
+    };
+    dispatch(editExpenseAction(updatedFormData as ExpensesObjectType));
+  };
+
+  const handleSubmit = () => {
     const newExpenseId = expenses.length === 0 ? 0 : expenses[expenses.length - 1].id + 1;
     const updatedFormData = {
       ...formData,
@@ -49,17 +64,19 @@ function WalletForm() {
 
   return (
     <div className="wallet-form-container">
-      <form onSubmit={ handleSubmit }>
+      <form>
         <label htmlFor="value">Valor da despesa:</label>
         <input
+          value={ formData.value }
           onChange={ handleChange }
-          type="text"
+          type="number"
           id="value"
           data-testid="value-input"
         />
 
         <label htmlFor="description">Descrição:</label>
         <input
+          value={ formData.description }
           onChange={ handleChange }
           type="text"
           id="description"
@@ -67,7 +84,12 @@ function WalletForm() {
         />
 
         <label htmlFor="currency">Moeda:</label>
-        <select data-testid="currency-input" id="currency" onChange={ handleChange }>
+        <select
+          value={ formData.currency }
+          data-testid="currency-input"
+          id="currency"
+          onChange={ handleChange }
+        >
           {
             currencies.map((currency) => {
               return <option key={ currency } value={ currency }>{ currency }</option>;
@@ -76,14 +98,24 @@ function WalletForm() {
         </select>
 
         <label htmlFor="method">Método de pagamento:</label>
-        <select data-testid="method-input" id="method" onChange={ handleChange }>
+        <select
+          value={ formData.method }
+          data-testid="method-input"
+          id="method"
+          onChange={ handleChange }
+        >
           <option value="Dinheiro">Dinheiro</option>
           <option value="Cartão de crédito">Cartão de crédito</option>
           <option value="Cartão de débito">Cartão de débito</option>
         </select>
 
         <label htmlFor="tag">Categoria:</label>
-        <select data-testid="tag-input" id="tag" onChange={ handleChange }>
+        <select
+          value={ formData.tag }
+          data-testid="tag-input"
+          id="tag"
+          onChange={ handleChange }
+        >
           <option value="Alimentação">Alimentação</option>
           <option value="Lazer">Lazer</option>
           <option value="Trabalho">Trabalho</option>
@@ -91,7 +123,13 @@ function WalletForm() {
           <option value="Saúde">Saúde</option>
         </select>
 
-        <button type="submit">Adicionar despesa</button>
+        { editor
+          ? (
+            <button onClick={ handleEditExpense } type="button">
+              Editar despesa
+            </button>
+          )
+          : <button onClick={ handleSubmit } type="button">Adicionar despesa</button>}
       </form>
     </div>
   );

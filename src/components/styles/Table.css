@@ -2,11 +2,11 @@
   width: 100%;
 }
 
-.expense-table thead tr , .expense-table tbody tr {
+.expense-table tr {
   columns: 9;
 }
 
-.expense-table thead tr > * , .expense-table tbody tr > * {
+.expense-table tr > * {
   border: 1px solid red;
   min-width: 100px;
 }

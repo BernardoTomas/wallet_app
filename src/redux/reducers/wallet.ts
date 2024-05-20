@@ -4,6 +4,8 @@ import {
   REQUEST_CURRENCY_CODES,
   SUBMIT_NEW_EXPENSE,
   DELETE_EXPENSE,
+  TOGGLE_EXPENSE_EDITOR,
+  EDIT_EXPENSE,
 } from '../actions';
 
 const INITIAL_STATE = {
@@ -29,7 +31,23 @@ const walletReducer = (
         ...state,
         expenses: action.payload,
       };
-
+    case TOGGLE_EXPENSE_EDITOR:
+      return {
+        ...state,
+        editor: true,
+        idToEdit: action.payload,
+      };
+    case EDIT_EXPENSE:
+      return {
+        ...state,
+        editor: false,
+        expenses: state.expenses.map((expense) => {
+          if (expense.id === state.idToEdit) {
+            return action.payload;
+          }
+          return expense;
+        }),
+      };
     case REQUEST_CURRENCY_CODES:
       return {
         ...state,

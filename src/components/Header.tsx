@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import { GlobalStoreType } from '../types';
+import './styles/Header.css';
 
 function Header() {
   const userEmail = useSelector((state: GlobalStoreType) => state.user.email);
