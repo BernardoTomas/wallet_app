@@ -14,7 +14,7 @@ function Header() {
         <h5 data-testid="total-field">
           {
           expenses.length === 0
-            ? 0
+            ? '0.00'
             : (
               expenses.reduce((acc, expense) => {
                 if (expense.value) {

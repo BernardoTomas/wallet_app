@@ -3,6 +3,7 @@ import {
   REQUEST_LOADING,
   REQUEST_CURRENCY_CODES,
   SUBMIT_NEW_EXPENSE,
+  DELETE_EXPENSE,
 } from '../actions';
 
 const INITIAL_STATE = {
@@ -23,6 +24,12 @@ const walletReducer = (
         ...state,
         expenses: [...state.expenses, action.payload],
       };
+    case DELETE_EXPENSE:
+      return {
+        ...state,
+        expenses: action.payload,
+      };
+
     case REQUEST_CURRENCY_CODES:
       return {
         ...state,

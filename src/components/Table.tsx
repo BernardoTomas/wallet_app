@@ -1,9 +1,16 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import './styles/Table.css';
 import { GlobalStoreType } from '../types';
+import { deleteExpenseAction } from '../redux/actions';
 
 function Table() {
   const { expenses } = useSelector((globalState: GlobalStoreType) => globalState.wallet);
+  const dispatch = useDispatch();
+
+  const handleDeleteExpense = (id: number) => {
+    const newExpenseList = expenses.filter((expense) => expense.id !== id);
+    dispatch(deleteExpenseAction(newExpenseList));
+  };
 
   return (
     <div className="expense-table-container">
@@ -52,7 +59,13 @@ function Table() {
                   <td>Real</td>
                   <td>
                     <button type="button">Editar</button>
-                    <button type="button">Excluir</button>
+                    <button
+                      type="button"
+                      data-testid="delete-btn"
+                      onClick={ () => handleDeleteExpense(id) }
+                    >
+                      Excluir
+                    </button>
                   </td>
                 </tr>
               ))

@@ -6,6 +6,7 @@ export const SUBMIT_NEW_EXPENSE = 'SUBMIT_NEW_EXPENSE';
 export const REQUEST_LOADING = 'REQUEST_LOADING';
 export const REQUEST_CURRENCY_CODES = 'REQUEST_CURRENCY_CODES';
 export const REQUEST_FALIED = 'REQUEST_FAILED';
+export const DELETE_EXPENSE = 'DELETE_EXPENSE';
 const ALL_CURRENCIES_URL = 'https://economia.awesomeapi.com.br/json/all';
 
 const submitLoginAction = (email: string) => ({
@@ -50,9 +51,15 @@ const requestAllCurrenciesList = (newExpense: ExpensesObjectType) => (
   }
 );
 
+const deleteExpenseAction = (newExpenseList: ExpensesObjectType[]) => ({
+  type: DELETE_EXPENSE,
+  payload: newExpenseList,
+});
+
 export {
   submitLoginAction,
   submitNewExpenseAction,
   requestAllCurrencyCodes,
   requestAllCurrenciesList,
+  deleteExpenseAction,
 };
