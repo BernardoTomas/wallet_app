@@ -1,0 +1,12 @@
+.expense-table {
+  width: 100%;
+}
+
+.expense-table thead tr , .expense-table tbody tr {
+  columns: 9;
+}
+
+.expense-table thead tr > * , .expense-table tbody tr > * {
+  border: 1px solid red;
+  min-width: 100px;
+}

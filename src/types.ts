@@ -5,6 +5,24 @@ export type UserStateType = {
   email: string;
 };
 
+export type CurrencyObjectType = {
+  code: string;
+  codein: string;
+  name: string;
+  high: string;
+  low: string;
+  varBid: string;
+  pctChange: string;
+  bid: string;
+  ask: string;
+  timestamp: string;
+  create_date: string;
+};
+
+export type AllCurrenciesDataType = {
+  [key: string]: CurrencyObjectType;
+};
+
 export type ExpensesObjectType = {
   id: number;
   value: string;
@@ -36,24 +54,6 @@ export type WalletActionType = {
 export type GlobalStoreType = {
   user: UserStateType;
   wallet: WalletStateType;
-};
-
-export type CurrencyObjectType = {
-  code: string;
-  codein: string;
-  name: string;
-  high: string;
-  low: string;
-  varBid: string;
-  pctChange: string;
-  bid: string;
-  ask: string;
-  timestamp: string;
-  create_date: string;
-};
-
-export type AllCurrenciesDataType = {
-  [key: string]: CurrencyObjectType;
 };
 
 export type DispatchType = ThunkDispatch<GlobalStoreType, unknown, AnyAction>;
