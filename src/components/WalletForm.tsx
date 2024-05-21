@@ -58,6 +58,14 @@ function WalletForm() {
       exchangeRates: {},
     };
     dispatch(requestAllCurrenciesList(updatedFormData));
+    setFormData({
+      id: 0,
+      value: '',
+      currency: 'USD',
+      method: 'Dinheiro',
+      tag: 'Alimentação',
+      description: '',
+    });
   };
 
   if (isLoading) return <h3>Carregando...</h3>;
