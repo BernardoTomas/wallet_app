@@ -11,8 +11,8 @@ function Header() {
       Header
       <div className="user-data">
         <h5 data-testid="email-field">{ userEmail }</h5>
-        <h5 data-testid="header-currency-field">BRL</h5>
-        <h5 data-testid="total-field">
+        <h4 data-testid="header-currency-field">BRL</h4>
+        <h4 data-testid="total-field">
           {
           expenses.length === 0
             ? '0.00'
@@ -28,7 +28,7 @@ function Header() {
               }, 0).toFixed(2)
             )
         }
-        </h5>
+        </h4>
       </div>
     </header>
   );

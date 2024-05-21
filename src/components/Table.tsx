@@ -45,22 +45,26 @@ function Table() {
                 currency,
               }) => (
                 <tr key={ id }>
-                  <td>{ description }</td>
-                  <td>{ tag }</td>
-                  <td>{ method }</td>
-                  <td>{ Number(value).toFixed(2) }</td>
-                  <td>{ exchangeRates[currency].name }</td>
+                  <td><h5>{ description }</h5></td>
+                  <td><h5>{ tag }</h5></td>
+                  <td><h5>{ method }</h5></td>
+                  <td><h5>{ Number(value).toFixed(2) }</h5></td>
+                  <td><h5>{ exchangeRates[currency].name }</h5></td>
                   <td>
-                    {
-                      Number(exchangeRates[currency].ask).toFixed(2)
-                    }
+                    <h5>
+                      {
+                        Number(exchangeRates[currency].ask).toFixed(2)
+                      }
+                    </h5>
                   </td>
                   <td>
-                    {
-                      (Number(value) * Number(exchangeRates[currency].ask)).toFixed(2)
-                    }
+                    <h5>
+                      {
+                        (Number(value) * Number(exchangeRates[currency].ask)).toFixed(2)
+                      }
+                    </h5>
                   </td>
-                  <td>Real</td>
+                  <td><h5>Real</h5></td>
                   <td>
                     <button
                       type="button"
