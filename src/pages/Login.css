@@ -1,0 +1,12 @@
+.login-bg-image {
+  background-image: linear-gradient(0deg, var(--g), var(--g)), url('/LoginBg.jpg');
+  margin-bottom: -25vh;
+  min-height: 50vh;
+}
+
+.login-container input:focus {
+  border: 2px solid var(--lg);
+  border-top: none;
+  box-shadow: 6px 6px 0 var(--lg);
+  outline: none;
+}

@@ -7,6 +7,28 @@
 }
 
 .expense-table tr > * {
-  border: 1px solid red;
+  border: 1px solid var(--vlg);
+  font-size: 0.8em;
   min-width: 100px;
+  padding: 8px;
+  text-align: center;
+}
+
+.expense-table th {
+  background-color: var(--vlg);
+  color: var(--g);
+}
+
+.expense-table td button {
+  border: 2px solid;
+  border-radius: 4px;
+  font-size: 20px;
+}
+
+.delete-btn {
+  color: var(--delete);
+}
+
+.edit-btn {
+  color: var(--edit);
 }

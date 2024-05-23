@@ -1,14 +1,6 @@
 .wallet-header {
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  padding: 24px 48px;
-}
 
-.user-data {
-  display: flex;
-}
-
-.user-data h5 {
-  padding-left: 16px;
+  --g: rgba(13, 51, 0, 0.85);
+  background-image: linear-gradient(0deg, var(--g), var(--g)), url('/LoginBg.jpg');
+  min-width: 100vw;
 }

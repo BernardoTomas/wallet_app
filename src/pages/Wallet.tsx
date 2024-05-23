@@ -4,11 +4,11 @@ import WalletForm from '../components/WalletForm';
 
 function Wallet() {
   return (
-    <>
+    <main className="bg-stone-300 min-h-screen">
       <Header />
       <WalletForm />
       <Table />
-    </>
+    </main>
   );
 }
 

@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import './styles/Table.css';
+import { MdEdit, MdDeleteForever } from 'react-icons/md';
 import { GlobalStoreType } from '../types';
 import { deleteExpenseAction, toggleEditExpenseAction } from '../redux/actions';
 
@@ -17,7 +18,7 @@ function Table() {
   };
 
   return (
-    <div className="expense-table-container">
+    <div className="expense-table-container m-8 p-4 rounded-md bg-white shadow-xl">
       <table className="expense-table">
         <thead>
           <tr>
@@ -65,21 +66,23 @@ function Table() {
                     </h5>
                   </td>
                   <td><h5>Real</h5></td>
-                  <td>
+                  <td className="buttons-container space-x-2">
                     <button
                       type="button"
                       data-testid="edit-btn"
+                      className="edit-btn hover:ring-4 duration-300 ring-orange-300"
                       onClick={ () => handleChangeEditMode(id) }
                     >
-                      Editar
+                      <MdEdit />
                     </button>
 
                     <button
                       type="button"
                       data-testid="delete-btn"
+                      className="delete-btn hover:ring-4 duration-300 ring-red-300"
                       onClick={ () => handleDeleteExpense(id) }
                     >
-                      Excluir
+                      <MdDeleteForever />
                     </button>
                   </td>
                 </tr>
